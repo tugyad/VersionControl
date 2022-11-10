@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace UserMaintenance
         {
             InitializeComponent();
             label1.Text = Resource1.FullName; // label1
-            
+            button2.Text = Resource1.Write;
             button1.Text = Resource1.Add; // button1
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -34,5 +35,36 @@ namespace UserMaintenance
             };
             users.Add(u);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Stream myStream;
+            SaveFileDialog s = new SaveFileDialog();
+            s.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            s.Title = "Save to file";
+            s.FileName = "DefaultOutputName.txt";
+
+            if (s.ShowDialog() == DialogResult.OK)
+
+            {
+
+                StreamWriter writer = new StreamWriter(s.OpenFile());
+
+                for (int i = 0; i < listBox1.Items.Count; i++)
+
+                {
+                    writer.WriteLine(listBox1.SelectedIndex);
+                    writer.WriteLine(listBox1.Items[i].ToString());
+                   
+
+                }
+
+                writer.Dispose();
+
+                writer.Close();
+
+            }
+        }
     }
+
 }
