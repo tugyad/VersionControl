@@ -15,6 +15,7 @@ namespace LINQ
         public Form1()
         {
             InitializeComponent();
+
         }
     }
 }
