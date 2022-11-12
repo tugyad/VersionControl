@@ -19,8 +19,10 @@ namespace LINQ
         {
             InitializeComponent();
             LoadData("ramen.csv");
-
+            listBox1.DisplayMember = "Name";
+            GetCountries();
         }
+
 
 
         private void LoadData(string fileName)
@@ -65,6 +67,19 @@ namespace LINQ
             }
 
             return currentCountry;
+        }
+        private void GetCountries()
+        {
+            var countriesList = from c in countries
+                                where c.Name.Contains(textBox1.Text)
+                                orderby c.Name
+                                select c;
+            listBox1.DataSource = countriesList.ToList();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            GetCountries();
         }
     }
 }

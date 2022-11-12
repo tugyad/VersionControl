@@ -14,5 +14,6 @@ namespace LINQ
         public int ContryFK { get; set; }
         public Country Country { get; set; }
         public double Rating { get; set; }
+        
     }
 }
