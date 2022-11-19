@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gy04v2", "gy04v2\gy04v2.csproj", "{7DD54459-5ED0-4CBC-8C28-8EA64C8D307D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DD54459-5ED0-4CBC-8C28-8EA64C8D307D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD54459-5ED0-4CBC-8C28-8EA64C8D307D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD54459-5ED0-4CBC-8C28-8EA64C8D307D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD54459-5ED0-4CBC-8C28-8EA64C8D307D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {370730B5-CE24-4DB2-BAB2-B0A56B4ABB8D}
+	EndGlobalSection
+EndGlobal
