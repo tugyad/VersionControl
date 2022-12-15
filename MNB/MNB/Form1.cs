@@ -26,8 +26,8 @@ namespace MNB
             InitializeComponent();
             dataGridView1.DataSource = Rates;
             GetRates();
-            
-                       
+            RefreshData();
+
         }
 
         private string GetRates()
@@ -93,9 +93,19 @@ namespace MNB
 
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
 
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
 
-
-
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
     }
 }
