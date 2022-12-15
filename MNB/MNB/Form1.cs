@@ -18,34 +18,63 @@ namespace MNB
 {
     public partial class Form1 : Form
     {
-        
+        BindingList<RateData> Rates = new BindingList<RateData>();
         public Form1()
         {
-            BindingList<RateData> Rates = new BindingList<RateData>();
+            
             InitializeComponent();
             dataGridView1.DataSource = Rates;
             GetRates();
-           
             
-
+                       
         }
 
         private string GetRates()
         {
-            var mnbService = new MNBArfolyamServiceSoapClient();
+            MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
 
-            var request = new GetExchangeRatesRequestBody()
+            GetExchangeRatesRequestBody request = new GetExchangeRatesRequestBody()
             {
                 currencyNames = "EUR",
                 startDate = "2020-01-01",
                 endDate = "2020-06-30"
             };
-            var response = mnbService.GetExchangeRates(request);
-            var result = response.GetExchangeRatesResult;
+
+
+            GetExchangeRatesResponseBody response = mnbService.GetExchangeRates(request);
+            string result = response.GetExchangeRatesResult;
+            mnbService.Close();
+            return result;
+
+        }
+        private void ReadXml()
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(GetRates());
+            foreach (XmlElement item in xml.DocumentElement)
+            {
+                if (item.ChildNodes[0] != null)
+                {
+                    RateData rd = new RateData();
+                          
+                    Rates.Add(rd);
+                    rd.Currency = item.ChildNodes[0].Attributes["curr"].Value;
+                    rd.Date = Convert.ToDateTime(item.Attributes["date"].Value);
+                    decimal unit = Convert.ToDecimal(item.ChildNodes[0].Attributes["unit"].Value);
+                    decimal value = Convert.ToDecimal(item.ChildNodes[0].InnerText);
+                    if (unit != 0)
+                    {
+                        rd.Value = value / unit;
+                    }
+                    else
+                    {
+                        rd.Value = value;
+                    }
+                }
+            }
         }
 
 
-         
 
 
 
