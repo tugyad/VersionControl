@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 
 
@@ -23,7 +24,14 @@ namespace MNB
             BindingList<RateData> Rates = new BindingList<RateData>();
             InitializeComponent();
             dataGridView1.DataSource = Rates;
+            GetRates();
+           
+            
 
+        }
+
+        private string GetRates()
+        {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
@@ -34,10 +42,12 @@ namespace MNB
             };
             var response = mnbService.GetExchangeRates(request);
             var result = response.GetExchangeRatesResult;
-
         }
 
-        
+
+         
+
+
 
     }
 }
