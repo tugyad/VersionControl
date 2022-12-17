@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VaR.Entities
 {
-    class PortfolioItem
+    public class PortfolioItem
     {
         public string Index { get; set; }
         public decimal Volume { get; set; }
